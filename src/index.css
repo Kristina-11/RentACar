@@ -1,0 +1,15 @@
+.nav {
+    display: grid !important;
+    grid-template-columns: auto auto auto;
+}
+
+.nav-left {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.nav-right {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: flex-end;
+}

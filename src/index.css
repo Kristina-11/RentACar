@@ -1,3 +1,7 @@
+a {
+    color: lightblue !important;
+}
+
 .nav {
     display: grid !important;
     grid-template-columns: auto auto auto;

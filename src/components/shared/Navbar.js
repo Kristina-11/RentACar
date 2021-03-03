@@ -10,9 +10,12 @@ export default function Navbar() {
                         <h1>Rent A Car</h1>
                     </NavLink>
                 </div>
-                <div className="level-item is-size-4">
-                    <NavLink to='/login'>Log in</NavLink>
-                    <NavLink to='/signup'>Sign up</NavLink>
+                <div className="level-item is-size-6">
+                    <NavLink to='/login' className='pl-3'>Log in</NavLink>
+                    <NavLink to='/signup' className='pl-3'>Sign up</NavLink>
+                    <NavLink to='/profile' className='pl-3'>Profile</NavLink>
+                    <NavLink to='/admin' className='pl-3'>Admin panel</NavLink>
+                    <NavLink to='/logout' className='pl-3'>Log out</NavLink>
                 </div>
             </div>
         </nav>

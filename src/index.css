@@ -1,7 +1,30 @@
-a {
-    color: lightblue !important;
+html {
+    height: 100%;
 }
 
+body {
+    min-height: 100%;
+    height: auto;
+    background-image: url('../src/img/main.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-size: 3rem;
+    color: white;
+}
+
+a {
+    color: rgb(197, 198, 199) !important;
+}
+
+.input {
+    width: 60%;
+}
+
+/* Navigation */
 .nav {
     display: grid !important;
     grid-template-columns: auto auto auto;
@@ -16,4 +39,23 @@ a {
     grid-column: 3;
     grid-row: 1;
     justify-self: flex-end;
+}
+
+/* Main */
+main {
+    background-color: rgba(175, 176, 177, 0.698);
+    border-radius: 5px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    margin: 50px;
+}
+
+.main-content > div {
+    border: 1px solid rgba(247, 249, 250, 0.541);
+    padding: 10px;
+    margin: 5px;
 }

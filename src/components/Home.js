@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react';
+import { db } from '../firebase/config';
 import Vehicle from './Vehicle';
 
 export default function Home() {
-    const [ vehicles, setVehicles ] = useState([
-        { brand: 'Mercedes', model: 'A8', constructionYear: '2002', fuelType: 'dizel', seats: '5', pricePerDay: '50$' },
-        { brand: 'Mercedes', model: 'A8', constructionYear: '2002', fuelType: 'dizel', seats: '5', pricePerDay: '50$' },
-        { brand: 'Mercedes', model: 'A8', constructionYear: '2002', fuelType: 'dizel', seats: '5', pricePerDay: '50$' },
-        { brand: 'Mercedes', model: 'A8', constructionYear: '2002', fuelType: 'dizel', seats: '5', pricePerDay: '50$' },
-        { brand: 'Mercedes', model: 'A8', constructionYear: '2002', fuelType: 'dizel', seats: '5', pricePerDay: '50$' }
-    ]);
-    
+    const [ vehicles, setVehicles ] = useState([]);
+
+    const fetchVehicles = async () => {
+      const vehiclesCollection = await db.collection('vehicles').get();
+      setVehicles(vehiclesCollection.docs.map(doc => {
+        return doc.data();
+      }))
+    }
+
+    useEffect(() => {
+      fetchVehicles();
+    },[]);
+
     return (
         <main className="container has-text-centered mt-6 p-4">
             <section className="container">
@@ -27,9 +34,10 @@ export default function Home() {
             </section>
             <section className="main-content container">
                 {
-                    vehicles && vehicles.map((vehicle) => {
-                        return <Vehicle props={vehicle} key={Math.random() * 10} />
-                    })
+                    vehicles.length ? vehicles.map((vehicle) => {
+                        return <Vehicle props={vehicle} key={vehicle.id} />
+                    }) : 
+                    <div className="button is-loading"></div>
                 }
             </section>
         </main>

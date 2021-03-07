@@ -6,8 +6,27 @@ import Signup from "./components/Signup";
 import Admin from "./components/Admin";
 import Profile from "./components/Profile";
 import Navbar from "./components/shared/Navbar";
+import { useEffect } from "react";
+import { auth, db } from "./firebase/config";
+import { useContext } from "react";
+import { VisitorContext } from "./context/VisitorsContext";
 
 function App() {
+  const { setUser } = useContext(VisitorContext);
+  
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        db.collection('users').doc(user.uid).get()
+        .then((doc) => {
+          setUser(doc.data().username);
+        })
+      } else {
+        // Do stuff when user is null
+      }
+    })
+  })
+
   return (
     <div className="App">
       <Navbar />

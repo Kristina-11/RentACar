@@ -4,11 +4,14 @@ import 'bulma/css/bulma.css';
 import './index.css';
 import App from './App';
 import { HashRouter } from 'react-router-dom';
+import VisitorContextProvider from './context/VisitorsContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter basename='/'>
-      <App />
+      <VisitorContextProvider>
+        <App />
+      </VisitorContextProvider>
     </HashRouter></React.StrictMode>,
   document.getElementById('root')
 );

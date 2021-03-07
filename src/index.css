@@ -59,3 +59,15 @@ main {
     padding: 10px;
     margin: 5px;
 }
+
+.file {
+    margin: 0 auto;
+}
+
+.add {
+    width: 80%;
+}
+
+.rounded-corners {
+  border-radius: 10px;
+}

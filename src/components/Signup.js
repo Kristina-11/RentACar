@@ -1,9 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import { useContext } from 'react';
 import { storage, db, auth, firebase } from '../firebase/config';
-import { VisitorContext } from '../context/VisitorsContext';
 
 function Signup() {
   const [ username, setUsername ] = useState('');
@@ -19,17 +17,21 @@ function Signup() {
         auth.createUserWithEmailAndPassword(email, password)
         .then(res => {
           return db.collection('users').doc(res.user.uid).set({
-            username: username
+            id: res.user.uid,
+            username,
+            email,
+            password
           });
         }).catch(err => {
           // setError(err)
           console.log(err);
         });
+
+        history.push('/');
       } catch (error) {
         console.log(error);
       }
     }
-    history.push('/');
   }
 
 return (
@@ -41,14 +43,14 @@ return (
                 <div className="field">
                     <label className="label has-text-dark is-size-5">Username</label>
                     <div className="control has-icons-left">
-                        <input className="input" name='text' type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
+                        <input className="input" name='text' type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} required />
                     </div>
                     <p className="help error username"></p>
                 </div>  
                 <div className="field">
                     <label className="label has-text-dark is-size-5">Email</label>
                     <div className="control has-icons-left">
-                        <input className="input" name='email' type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                        <input className="input" name='email' type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
                         <span className="icon is-small is-left">
                             <i className="fas fa-envelope"></i>
                         </span>
@@ -58,7 +60,7 @@ return (
                 <div className="field">
                     <label className="label has-text-dark is-size-5">Password</label>
                     <div className="control has-icons-left">
-                        <input className="input" name='password' type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                        <input className="input" name='password' type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required/>
                         <span className="icon is-small is-left">
                             <i className="fas fa-lock"></i>
                         </span>

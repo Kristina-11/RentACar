@@ -55,7 +55,7 @@ function ListVehicles({ vehicles, vehicle, setVehicleAdd }) {
     });
   });
   
-  const handleEdit = (id) => {
+  const handleEdit = () => {
     setUpdate(true);
   }
 

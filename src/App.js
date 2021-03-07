@@ -8,7 +8,7 @@ import Profile from "./components/Profile";
 import Navbar from "./components/shared/Navbar";
 import { useEffect } from "react";
 import { auth, db } from "./firebase/config";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { VisitorContext } from "./context/VisitorsContext";
 
 function App() {
@@ -18,8 +18,10 @@ function App() {
     auth.onAuthStateChanged(user => {
       if (user) {
         db.collection('users').doc(user.uid).get()
-        .then((doc) => {
-          setUser(doc.data().username);
+        .then((res) => {
+          setUser(res.data().username)
+        }).catch(err => {
+          console.log(err)
         })
       } else {
         // Do stuff when user is null

@@ -40,7 +40,6 @@ function Admin() {
                     <VehicleHandling />
                 </div>
                 <div id="users" className='is-hidden'>
-                    <h2 className="is-size-2">Users</h2>
                     <UsersHandling />
                 </div>
             </div>

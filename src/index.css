@@ -65,9 +65,29 @@ main {
 }
 
 .add {
-    width: 80%;
+    width: 30%;
 }
 
 .rounded-corners {
   border-radius: 10px;
+}
+
+.users {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.users > h1 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.add-users {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.users-table {
+  grid-row: 3;
+  grid-column:  1/ 4;
 }

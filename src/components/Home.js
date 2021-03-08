@@ -1,11 +1,12 @@
+import moment from 'moment';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { db } from '../firebase/config';
 import Vehicle from './Vehicle';
 
-export default function Home() {
+export default function Home({user}) {
     const [ vehicles, setVehicles ] = useState([]);
-
+    
     const fetchVehicles = async () => {
       const vehiclesCollection = await db.collection('vehicles').get();
       setVehicles(vehiclesCollection.docs.map(doc => {
@@ -26,16 +27,13 @@ export default function Home() {
                 </p>
 
                 <div className="">
-                    Search for a car by brand name
-                </div>
-                <div className="">
-                    <input type="search" name="search" id="search" />
+                    Number of cars: { vehicles.length }
                 </div>
             </section>
             <section className="main-content container">
                 {
                     vehicles.length ? vehicles.map((vehicle) => {
-                        return <Vehicle props={vehicle} key={vehicle.id} />
+                        return <Vehicle props={vehicle} key={vehicle.id} user={user} />
                     }) : 
                     <div className="button is-loading"></div>
                 }

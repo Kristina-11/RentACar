@@ -97,7 +97,8 @@ function UsersHandling() {
                   </td>
                   <td>{ obj.email }</td>
                   <td>{ obj.password }</td>
-                  
+                  {
+                    obj.username !== 'Admin' &&
                   <td>
                     <span className="icon">
                       <i className="fas fa-edit" onClick={(e) => handleEdit(e)} >
@@ -105,6 +106,7 @@ function UsersHandling() {
                       </i>
                     </span>
                   </td>
+                  }
                   {
                     obj.username !== 'Admin' &&
                     <td>

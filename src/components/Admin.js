@@ -3,9 +3,8 @@ import { useEffect } from "react";
 import VehicleHandling from './admin/VehicleHandling';
 import UsersHandling from './admin/UsersHandling';
 
-function Admin() {
-
-    // Tabs
+function Admin({ userObject, visitor }) {
+  // Tabs
     useEffect(() => {
         const tabs = document.querySelectorAll('.tabs li');
         const tabContent = document.querySelectorAll('#tab-content > div');
@@ -27,8 +26,9 @@ function Admin() {
     }, [])
 
     return (
-        <main className="container has-text-centered mt-6 p-4">
-            <h1 className="is-size-1 has-text-dark">Admin panel</h1>
+        userObject !== null && visitor === 'Admin' ? 
+          <main className="container has-text-centered mt-6 p-4">
+              <h1 className="is-size-1 has-text-dark">Admin panel</h1>
             <div className="tabs is-boxed is-large">
                 <ul>
                     <li className='is-active' data-tab='vehicles'><a className='has-text-dark'>Vehicles</a></li>
@@ -42,9 +42,11 @@ function Admin() {
                 <div id="users" className='is-hidden'>
                     <UsersHandling />
                 </div>
-            </div>
-        </main>
+            </div> 
+          </main> :
+          <main className="container has-text-centered mt-6 p-4">
+            <div className="is-size-1 has-text-dark">Loading...</div>
+          </main>
     )
-}
-
+  }
 export default Admin;

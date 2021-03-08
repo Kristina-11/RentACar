@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bulma/css/bulma.css';
 import './index.css';
+import 'moment';
 import App from './App';
 import { HashRouter } from 'react-router-dom';
 import VisitorContextProvider from './context/VisitorsContext';

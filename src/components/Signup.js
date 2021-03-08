@@ -21,10 +21,22 @@ function Signup() {
             username,
             email,
             password
+          }),
+          db.collection('users-renting').doc(res.user.uid).set({
+            id: res.user.uid,
+            brandId: '',
+            modelRenting: '',
+            brandRenting: '',
+            rentingFrom: '',
+            rentingTo: '',
+            rentingTime: 0,
+            date: '',
+            vip: false,
+            payment: 0
           });
         }).catch(err => {
           // setError(err)
-          console.log(err);
+          console.log(err.message);
         });
 
         history.push('/');

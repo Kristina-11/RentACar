@@ -1,6 +1,5 @@
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
-import VehicleDetails from "./components/VehicleDetails";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Admin from "./components/Admin";
@@ -12,7 +11,8 @@ import { useContext, useState } from "react";
 import { VisitorContext } from "./context/VisitorsContext";
 
 function App() {
-  const { setUser } = useContext(VisitorContext);
+  const { user, setUser } = useContext(VisitorContext);
+  const [ userObject, setUserObject ] = useState(null);
   
   useEffect(() => {
     auth.onAuthStateChanged(user => {
@@ -23,6 +23,7 @@ function App() {
         }).catch(err => {
           console.log(err)
         })
+        setUserObject(user);
       } else {
         // Do stuff when user is null
       }
@@ -31,25 +32,22 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar userObject={userObject} setUserObject={setUserObject} />
       <Switch>
         <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route path='/vehicle/:id'>
-          <VehicleDetails />
+          <Home user={userObject} />
         </Route>
         <Route path='/login'>
-          <Login />
+          <Login user={userObject} />
         </Route>
         <Route path='/signup'>
-          <Signup />
+          <Signup user={userObject} />
         </Route>
         <Route path='/profile'>
-          <Profile />
+          <Profile userObject={userObject} visitor={user} />
         </Route>
         <Route path='/admin'>
-          <Admin />
+          <Admin userObject={userObject} visitor={user}/>
         </Route>
       </Switch>
     </div>

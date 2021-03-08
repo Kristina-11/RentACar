@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/RentACar/static/css/main.1baaac83.chunk.css",
+    "main.js": "/RentACar/static/js/main.32e3a265.chunk.js",
+    "main.js.map": "/RentACar/static/js/main.32e3a265.chunk.js.map",
+    "runtime-main.js": "/RentACar/static/js/runtime-main.be0a3350.js",
+    "runtime-main.js.map": "/RentACar/static/js/runtime-main.be0a3350.js.map",
+    "static/css/2.49be9a4e.chunk.css": "/RentACar/static/css/2.49be9a4e.chunk.css",
+    "static/js/2.6c905347.chunk.js": "/RentACar/static/js/2.6c905347.chunk.js",
+    "static/js/2.6c905347.chunk.js.map": "/RentACar/static/js/2.6c905347.chunk.js.map",
+    "index.html": "/RentACar/index.html",
+    "static/css/2.49be9a4e.chunk.css.map": "/RentACar/static/css/2.49be9a4e.chunk.css.map",
+    "static/css/main.1baaac83.chunk.css.map": "/RentACar/static/css/main.1baaac83.chunk.css.map",
+    "static/js/2.6c905347.chunk.js.LICENSE.txt": "/RentACar/static/js/2.6c905347.chunk.js.LICENSE.txt",
+    "static/media/edit.bd176f6f.png": "/RentACar/static/media/edit.bd176f6f.png",
+    "static/media/index.css": "/RentACar/static/media/main.8a0d8497.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.be0a3350.js",
+    "static/css/2.49be9a4e.chunk.css",
+    "static/js/2.6c905347.chunk.js",
+    "static/css/main.1baaac83.chunk.css",
+    "static/js/main.32e3a265.chunk.js"
+  ]
+}
